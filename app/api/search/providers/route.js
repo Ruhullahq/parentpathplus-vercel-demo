@@ -30,8 +30,9 @@ async function nppesSearch({ first_name, city, state }){
 }
 
 const LOCAL = [
-  { id:'p1', name:'Example Clinic Naperville', city:'Naperville', state:'IL', phone:'+1-312-555-0100', website:'https://example.com', specialties:['ABA','SLP'] },
-  { id:'p2', name:'Chicago Pediatric SLP Group', city:'Chicago', state:'IL', phone:'+1-312-555-0111', specialties:['SLP'] },
+  { id:'p1', name:'Example Clinic Naperville', city:'Naperville', state:'IL', zip:'60540', phone:'+1-312-555-0100', website:'https://example.com', specialties:['ABA','SLP'], insurers:['Aetna','BCBSIL'] },
+  { id:'p2', name:'Chicago Pediatric SLP Group', city:'Chicago', state:'IL', zip:'60601', phone:'+1-312-555-0111', specialties:['SLP'], insurers:['Aetna','UHC'] },
+  { id:'p0', name:'Telehealth ABA of Illinois', city:'Remote', state:'IL', zip:'60640', phone:'+1-872-555-0000', specialties:['ABA'], insurers:['UHC','Aetna'] },
 ];
 
 export async function GET(req){

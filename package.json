@@ -1,5 +1,5 @@
 {
-  "name": "parentpathplus-vercel-demo",
+  "name": "parentpathplus-vercel-fullstack-v4",
   "private": true,
   "version": "1.0.0",
   "scripts": {
@@ -10,6 +10,8 @@
   "dependencies": {
     "next": "14.2.5",
     "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-dom": "18.3.1",
+    "stripe": "^16.2.0",
+    "pdfkit": "^0.13.0"
   }
 }
