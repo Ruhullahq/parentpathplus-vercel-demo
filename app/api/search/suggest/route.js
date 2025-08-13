@@ -17,6 +17,7 @@ const INSURERS = [
   { id:'uhc', name:'UnitedHealthcare', synonyms:['UHC','UMR'], states:['ALL'] },
   { id:'bcbs_il', name:'Blue Cross Blue Shield of Illinois', synonyms:['BCBSIL','Blue Cross IL'], states:['IL'] },
   { id:'medicaid_il', name:'Illinois Medicaid', synonyms:['HFS'], states:['IL'] },
+  { id:'cigna', name:'Cigna', synonyms:['Cigna PPO','Cigna OAP'], states:['ALL'] },
 ];
 const SPECIALTIES = ['ABA','SLP','OT','PT','BCBA','Feeding','AAC'];
 const CITIES = [
@@ -32,7 +33,7 @@ export async function GET(req){
   const state = searchParams.get('state') || 'IL';
   const s = q.toLowerCase();
 
-  const [prov] = await Promise.all([nlmSuggest(q)]);
+  const prov = await nlmSuggest(q);
   const cities = CITIES.filter(c => c.city.toLowerCase().includes(s) && (state ? c.state===state : true)).slice(0,5);
   const insurers = INSURERS.filter(i => (i.name.toLowerCase().includes(s) || i.synonyms.some(x=>x.toLowerCase().includes(s))) && (i.states.includes('ALL') || i.states.includes(state))).slice(0,5);
   const specialties = SPECIALTIES.filter(sp => sp.toLowerCase().includes(s)).map(sp => ({ code:sp, name:sp })).slice(0,5);

@@ -1,7 +1,11 @@
 'use client';
 export default function Pricing(){
   async function checkout(plan){
-    alert(`Opening checkout for ${plan} (demo)`);
+    try{
+      const r = await fetch('/api/checkout', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ plan }) });
+      const d = await r.json();
+      if (d.url) window.location.href = d.url; else alert('Stripe not configured. Set STRIPE_SECRET_KEY and prices in Vercel env.');
+    } catch { alert('Stripe not configured'); }
   }
   const tiers = [
     {name:'Essentials', price:'$19/mo', plan:'ESSENTIALS', features:['Navigator','Toolkits','Signals']},

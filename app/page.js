@@ -1,5 +1,5 @@
-import Link from "next/link";
-export default function Home() {
+import Link from 'next/link';
+export default function Home(){
   return (
     <div style={{display:'grid', gap:16}}>
       <section style={{background:'#fff', padding:24, borderRadius:16, boxShadow:'0 1px 2px rgba(0,0,0,0.05)'}}>
